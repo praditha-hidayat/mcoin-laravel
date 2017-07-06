@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Facades\Storage;
 use Validator;
 
 class User extends Authenticatable
@@ -42,7 +43,7 @@ class User extends Authenticatable
     }
 
     public function getPhotoAttribute($value) {
-        return \Storage::url(\Config::get('mcoin.path.user_photo') . '/' . $value);
+        return \URL::to('/') . Storage::url(\Config::get('mcoin.path.user_photo') . '/' . $value);
     }
 
     private function isInputValid($input) {
