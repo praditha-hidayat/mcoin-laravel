@@ -43,7 +43,11 @@ class User extends Authenticatable
     }
 
     public function getPhotoAttribute($value) {
-        return \URL::to('/') . Storage::url(\Config::get('mcoin.path.user_photo') . '/' . $value);
+        if (!empty($value)) {
+            \URL::to('/') . Storage::url(\Config::get('mcoin.path.user_photo') . '/' . $value);
+        } else {
+            return null;
+        }
     }
 
     private function isInputValid($input) {

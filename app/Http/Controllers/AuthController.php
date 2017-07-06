@@ -14,6 +14,12 @@ use JWTAuth;
 
 class AuthController extends ApiBaseController
 {
+    /**
+     * Check user authentication and send the token if success
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function login(Request $request) {
     	// grab credentials from the request
         $credentials = $request->only('email', 'password');
